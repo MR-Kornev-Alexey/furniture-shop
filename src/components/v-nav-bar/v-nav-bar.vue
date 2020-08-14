@@ -8,35 +8,18 @@
     >
       <v-app-bar-nav-icon @click="drawer = true" v-if="$vuetify.breakpoint.smAndDown"></v-app-bar-nav-icon>
       <v-row class="d-flex justify-center">
-        <v-col class="d-flex justify-end img-logo" md="2">
-          <img alt="logo" src="../../assets/img/svg/logo.svg">
-        </v-col>
         <v-col v-if="!$vuetify.breakpoint.smAndDown" class="main-nav" md="10">
           <div class="d-flex main-nav__top">
             <div :class="[
-              { 'main-nav__top_item_long margin-left-0': item.long &&item.left0},
-              { 'main-nav__top_item_long margin-left-48': item.long &&item.left48},
-              { 'main-nav__top_item_long margin-left-40': item.long &&item.left40},
-              { 'main-nav__top_item_short margin-left-40': !item.long &&item.left40},
-                             ]"
+              { 'margin-left-0': item.left0},
+              { ' margin-left-48': item.left48},
+              { 'margin-left-40': item.left40},
+                                    ]"
                  :key="i"
                  v-for="(item, i) in mainMenu">
               {{item.name}}
             </div>
-            <div class="nav-icons d-flex">
-              <div class="nav-icons__search">
-                <img alt="Search" src="../../assets/img/svg/search.svg">
-              </div>
-              <div class="shopping-bag">
-                <img alt="bag" src="../../assets/img/svg/shopping-bag.svg">
-                <div class="shopping-bag__round d-flex justify-center align-content-center">
-                  <div class="align-self-center">1</div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
+                 </div>
 
           <div class="d-flex sub-nav ">
             <div class="d-flex sub-nav__menu">
@@ -51,9 +34,17 @@
                 {{item.name}}
               </div>
             </div>
-            <div class="nav-phone text-center">
-              <div class="nav-phone__num ">+7 (495) 792-0668</div>
-              <div class="nav-phone__sub">Современная мебельная фабрика</div>
+            <div class="nav-icons d-flex">
+              <div class="nav-icons__search">
+                <img alt="Search" src="../../assets/img/svg/search.svg">
+              </div>
+              <div class="shopping-bag">
+                <img alt="bag" src="../../assets/img/svg/shopping-bag.svg">
+                <div class="shopping-bag__round d-flex justify-center align-content-center">
+                  <div class="align-self-center">1</div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -111,39 +102,31 @@ export default {
     mainMenu: [
       {
         left0: true,
-        name: 'Загрузка проекта',
-        dropdown: false,
-        long: true
+        name: '8 (800) 333-17-85 '
       },
       {
-        left48: true,
-        name: 'Доставка и оплата',
-        dropdown: false,
-        long: true
+        left30: true,
+        name: '+7 (495) 120-57-55'
       },
       {
-        left40: true,
-        name: 'О производстве',
-        dropdown: true,
-        long: true
+        left30: true,
+        name: 'О производстве'
       },
       {
-        left40: true,
-        name: 'Блог',
-        dropdown: false,
-        long: false
+        left30: true,
+        name: 'Корпоративным клиентам'
       },
       {
-        left40: true,
-        name: 'Портфолио',
-        dropdown: false,
-        long: true
+        left25: true,
+        name: 'Турагенствам'
       },
       {
-        left0: true,
-        name: 'Контакты',
-        dropdown: false,
-        long: true
+        left25: true,
+        name: 'Личным помощникам'
+      },
+      {
+        left25: true,
+        name: 'Частным клиентам'
       }
     ],
     subMenu: [
@@ -180,6 +163,7 @@ export default {
   .nav-main {
     margin: 0 auto 0 auto;
     height: 127px;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .img-logo {
@@ -188,20 +172,9 @@ export default {
   }
 
   .main-nav {
-    padding-left: 318px;
-
     .main-nav__top {
       padding-top: 6px;
-      font-family: "Exo 2", sans-serif;
-
-      .main-nav__top_item_long {
-        width: 124px;
-      }
-
-      .main-nav__top_item_short {
-        width: 30px;
-      }
-    }
+     }
   }
 
   .sub-nav {
@@ -217,27 +190,14 @@ export default {
     margin-left: 0;
   }
 
-  .margin-left-50 {
-    margin-left: 50px;
+  .margin-left-30 {
+    margin-left: 30px;
   }
 
-  .margin-left-48 {
-    margin-left: 48px;
+  .margin-left-25 {
+    margin-left: 25px;
   }
-
-  .margin-left-42 {
-    margin-left: 50px;
-  }
-
-  .margin-left-40 {
-    margin-left: 40px;
-  }
-
-  .margin-left-62 {
-    margin-left: 62px;
-  }
-
-  .nav-icons {
+.nav-icons {
     .nav-icons__search {
       img {
         height: 19px;
