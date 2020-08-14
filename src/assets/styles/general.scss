@@ -19,8 +19,9 @@ body{
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .v-toolbar__content, .v-toolbar__extension {
-height: 127px !important;
+  padding: 0;
 }
 header{
     height: 140px !important;
@@ -29,30 +30,79 @@ header{
   padding: 0;
 }
 
-.my-next{
-  position: absolute;
-  top: 90px;
-  right: -49px;
-  font-size: 49px;
+.margin-left-0 {
+  margin-left: 0;
 }
-.my-prev{
-  position: absolute;
-  top: 90px;
-  left: -49px;
-  font-size: 49px;
+
+.margin-right-6 {
+  margin-right: 6px;
 }
-.btn-send{
-  width: 177px;
-  height: 45px;
-  background: #D7B256;
-  border-radius: 2px;
-  color: #FFFFFF;
+.margin-right-12 {
+  margin-right: 12px;
+}
+.margin-left-19 {
+  margin-left: 19px;
+}
+.margin-left-15 {
+  margin-left: 15px;
+}
+.margin-left-30 {
+  margin-left: 30px;
+}
+.margin-left-31 {
+  margin-left: 31px;
+}
+.margin-left-33 {
+  margin-left: 33px;
+}
+.margin-left-27 {
+  margin-left: 27px;
+}
+.margin-left-60 {
+  margin-left: 60px;
+}
+
+.orange-button{
+  width: 96px;
+  height: 46px;
+  background: #FF782D;
+  border: 1px solid #FF782D;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-input, textarea{
+.button-44{
+  width: 44px;
+  height: 46px;
   background: #FFFFFF;
-  border: 1px solid #797979;
+  border: 1px solid #DDDDDD;
   box-sizing: border-box;
+  border-radius: 5px;
+}
+.icon-gray{
+font-size: 24px;
+  color: #777777;
+}
+.icon-orange{
+  font-size: 24px;
+  color: #FF782D;
+}
+.icon-pale{
+  font-size: 24px;
+  color: #DDDDDD;
+}
+.button-71{
+  width: 71px;
+  height: 46px;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 * {
   box-sizing: border-box;
