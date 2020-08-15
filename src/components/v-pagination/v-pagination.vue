@@ -46,7 +46,7 @@ export default {
 
 <style lang="scss">
   .v-my-pagination{
-    margin: 30px auto 0  auto;
+    margin: 0 auto 0  auto;
   }
   .v-table__pagination{
     display: inline-flex;
