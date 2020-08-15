@@ -27,7 +27,7 @@ export default {
         direction: 'прилет',
         flightNumber: 'SU347',
         amount: 120000,
-        passengers: 'Христофор Колумб Младший, Христофор Колумб Младший',
+        passengers: 'Христофор Колумб, Христофор Колумб Младший',
         contact: 'Христофор Колумб',
         phone: '+7 (989) 747-33-11 ',
         mainService: 'Vip-Зал',
