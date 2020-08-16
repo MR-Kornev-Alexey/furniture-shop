@@ -1,7 +1,13 @@
 <template>
     <v-row class="v-order-list">
-      <v-col>
+      <v-col v-if="Number(this.windowWidht) > 1036">
         <v-order-list-item
+          :key="i"
+          v-for="(item, i) in getDataFromAPI"
+          :incomingData="item"/>
+      </v-col>
+      <v-col v-if="Number(this.windowWidht) <= 1036">
+        <vOrderList1024
           :key="i"
           v-for="(item, i) in getDataFromAPI"
           :incomingData="item"/>
@@ -11,12 +17,21 @@
 
 <script>
 import vOrderListItem from './v-order-list-item'
+import vOrderList1024 from './v-order-list-item-1024'
 export default {
   name: 'v-order-list',
   components: {
-    vOrderListItem
+    vOrderListItem,
+    vOrderList1024
+  },
+  mounted () {
+    this.windowWidht = window.innerWidth
+    window.addEventListener('resize', () => {
+      this.windowWidht = window.innerWidth
+    })
   },
   data: () => ({
+    windowWidht: 0,
     getDataFromAPI: [
       {
         cancel: false,

@@ -55,11 +55,6 @@ import 'vue-select/dist/vue-select.css'
 Vue.component('v-my-select', vSelect)
 export default {
   name: 'v-choice',
-  methods: {
-    changeOut () {
-      alert('1111')
-    }
-  },
   data: () => ({
     options: [
       {
@@ -165,11 +160,14 @@ export default {
   @media only screen and (max-width: 1140px) {
     .vs__selected-options {
       width: 265px;
-      height: 47px;
-      justify-content: right;
     }
-    select {
-      width: 320px;}
-  }
-
+    }
+  @media only screen and (max-width: 1024px){
+    .v-select-bar-csv {
+      width: 281px;
+      height: 50px;
+    }
+   .vs__selected-options {
+     width: 231px;
+      }}
 </style>

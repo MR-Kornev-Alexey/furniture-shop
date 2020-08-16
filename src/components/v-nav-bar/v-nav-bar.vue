@@ -157,21 +157,9 @@ export default {
   name: 'v-nav-bar',
   mounted () {
     this.windowWidht = window.innerWidth
-    alert('first  ' + this.windowWidht)
     window.addEventListener('resize', () => {
       this.windowWidht = window.innerWidth
-      alert(this.windowWidht)
     })
-  },
-  methods: {
-    countWidth (width) {
-      alert('width  ' + width + '  this.windowWidht   ' + this.windowWidht)
-      if (width > Number(this.windowWidht)) {
-        return true
-      } else {
-        return false
-      }
-    }
   },
   data: () => {
     return ({
@@ -529,50 +517,12 @@ export default {
       margin: 4px 415px 0 0;
      }
   }
-
   @media only screen and (max-width: 1024px) {
-    .main-nav .main-nav__top .main-nav__top_item_short {
-      width: 74px;
-    }
-    .nav-icons {
-      margin: 0 -60px 0 -16px;
-    }
-    .main-nav .main-nav__top .main-nav__top_item_long {
-      width: 159px;
-    }
-    .margin-left-40, .margin-left-48 {
-      margin: 0 0 0 23px;
-      padding: 0 0 0 0;
-    }
-    .img-logo {
-      margin: 0 0 0 -166px;
-    }
     .main-nav {
-      padding-left: 26px;
+      padding-left: 0;
     }
-    .nav-phone {
-      margin: 0 0 0 16px;
-    }
-    .sub-nav {
-      align-self: end;
-    }
-  }
-
-  @media only screen and (max-width: 900px) {
-    .img-logo {
-      margin: 0 0 0 -16px;
-    }
-    .v-btn--icon.v-size--default .v-icon {
-      font-size: 32px;
-    }
-  }
-
-  @media only screen and (max-width: 768px) {
-    .img-logo {
-      margin: 0 0 0 -16px;
-    }
-    .v-btn--icon.v-size--default .v-icon {
-      font-size: 32px;
-    }
+.row{
+  margin: 0;
+}
   }
 </style>
