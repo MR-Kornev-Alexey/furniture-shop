@@ -241,4 +241,16 @@ export default {
     height: 26px;
     width: 26px;
   }
+  @media only screen and (max-width: 1366px) {
+    .padding-left-23 {
+      padding-left: 14px !important;
+    }
+    .padding-left-80 {
+      padding-left: 72px!important;
+    }
+    .padding-left-90 {
+      padding-left: 81px!important;
+    }
+  }
+
 </style>

@@ -9,18 +9,20 @@
       <v-app-bar-nav-icon @click="drawer = true" v-if="$vuetify.breakpoint.smAndDown"></v-app-bar-nav-icon>
       <v-row class="d-flex ">
         <v-col class="main-nav" cols="12" v-if="!$vuetify.breakpoint.smAndDown">
-          <div class="d-flex main-nav__top">
+           <div class="d-flex  justify-center main-nav__top" v-if="Number(this.windowWidht) <= 1152">
             <div class="d-flex main-nav__top__color">
-              <div :class="[
-              { 'margin-left-0 d-flex align-self-center font14': item.font14&&item.left0},
-              { 'margin-left-30 d-flex align-self-center font14': item.font14&&item.left30},
-              { 'margin-left-30 d-flex align-self-center font11': item.font11&&item.left30},
-              { 'margin-left-27 d-flex align-self-center font11': item.font11&&item.left27},
-              { 'margin-left-15 d-flex align-self-center': item.left15},
-              { 'margin-left-60 d-flex align-self-center': item.left60},
-                                    ]"
+              <div class="d-flex align-self-center" :class="[
+              { 'margin-left-0 font14': item.font14&&item.left0},
+              { 'margin-left-30 font14': item.font14&&item.left30},
+              { 'margin-left-30 font11': item.font11&&item.left30},
+              { 'margin-left-27  font11': item.font11&&item.left27},
+              { 'margin-left-15 ': item.left15},
+              { 'margin-left-60 ': item.left60},
+              { 'corpClass font11': item.corpClass},
+                                                   ]"
                    :key="i"
-                   v-for="(item, i) in mainMenu">
+                   v-for="(item, i) in  mainMenu1140"
+              >
                 <img :alt="item.alt" :class="[
               { 'margin-right-6': item.pic6},
                { 'margin-right-12': item.pic12}
@@ -34,8 +36,35 @@
 
           </div>
 
-          <div class="d-flex sub-nav ">
-            <div class="d-flex sub-nav__menu">
+          <div class="d-flex  justify-center main-nav__top" v-if="Number(this.windowWidht) > 1152">
+            <div class="d-flex main-nav__top__color">
+              <div class="d-flex align-self-center" :class="[
+              { 'margin-left-0 font14': item.font14&&item.left0},
+              { 'margin-left-30 font14': item.font14&&item.left30},
+              { 'margin-left-30 font11': item.font11&&item.left30},
+              { 'margin-left-27  font11': item.font11&&item.left27},
+              { 'margin-left-15 ': item.left15},
+              { 'margin-left-60 ': item.left60},
+              { 'corpClass font11': item.corpClass},
+                                                   ]"
+                   :key="i"
+                   v-for="(item, i) in mainMenu"
+                        >
+                <img :alt="item.alt" :class="[
+              { 'margin-right-6': item.pic6},
+               { 'margin-right-12': item.pic12}
+                                    ]"
+                     :src="item.src"
+                >
+                <a :href="item.href">{{item.name}}</a>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="d-flex sub-nav justify-center">
+            <div class="d-flex sub-nav__menu justify-center">
               <div class="d-flex logo-block">
                 <img src="../../assets/img/vip-avia/logo_image.svg" alt="Logo">
                 <div>
@@ -43,20 +72,21 @@
                   <div>SERVICE</div>
                 </div>
               </div>
+              <div class="d-flex " v-if="Number(this.windowWidht) > 1152">
               <div :class="[
-              { 'margin-left-33 selected d-flex align-self-center': item.selected&&item.left33 },
-               { 'margin-left-31 selected d-flex align-self-center': item.selected&&item.left31 },
-              { 'margin-left-15 selected d-flex align-self-center': item.selected&&item.left15 },
-              { 'margin-left-19 selected d-flex align-self-center': item.selected&&item.left19},
-                 { 'margin-left-33 d-flex align-self-center': !item.selected&&item.left33 },
-               { 'margin-left-31  d-flex align-self-center': !item.selected&&item.left31 },
-              { 'margin-left-15  d-flex align-self-center': !item.selected&&item.left15 },
-              { 'margin-left-19 d-flex align-self-center': !item.selected&&item.left19}
-            ]"
+              { 'margin-left-33 selected': item.selected&&item.left33 },
+              { 'margin-left-15 selected ': item.selected&&item.left15 },
+              { 'margin-left-19 selected ': item.selected&&item.left19},
+              { 'margin-left-33 ': !item.selected&&item.left33 },
+              { 'margin-left-31': !item.selected&&item.left31 },
+              { 'margin-left-15 ': !item.selected&&item.left15 },
+              { 'margin-left-19 ': !item.selected&&item.left19}
+            ]" class="d-flex align-self-center "
                    :key="i"
                    v-for="(item, i) in subMenu"
               >
                 <a :href="item.href">{{item.name}}</a>
+              </div>
               </div>
               <div>
                 <button class="orange-button margin-left-33 ">Заказать</button>
@@ -125,10 +155,29 @@
 <script>
 export default {
   name: 'v-nav-bar',
+  mounted () {
+    this.windowWidht = window.innerWidth
+    alert('first  ' + this.windowWidht)
+    window.addEventListener('resize', () => {
+      this.windowWidht = window.innerWidth
+      alert(this.windowWidht)
+    })
+  },
+  methods: {
+    countWidth (width) {
+      alert('width  ' + width + '  this.windowWidht   ' + this.windowWidht)
+      if (width > Number(this.windowWidht)) {
+        return true
+      } else {
+        return false
+      }
+    }
+  },
   data: () => {
     return ({
       group: '',
       drawer: false,
+      windowWidht: 0,
       mainMenu: [
         {
           left0: true,
@@ -137,7 +186,8 @@ export default {
           alt: 'Cellphone',
           pic6: true,
           font14: true,
-          href: '#'
+          href: '#',
+          width: 1142
         },
         {
           left30: true,
@@ -146,33 +196,81 @@ export default {
           alt: 'Cellphone',
           pic6: true,
           font14: true,
-          href: '#'
+          href: '#',
+          width: 1142
         },
         {
-          left30: true,
           name: 'Корпоративным клиентам',
           src: require('../../assets/img/vip-avia/info-outline.svg'),
           alt: 'Info',
           pic12: true,
           font11: true,
-          href: '#'
+          corpClass: true,
+          href: '#',
+          width: 1142
         },
         {
           left27: true,
           name: 'Турагенствам',
           font11: true,
-          href: '#'
+          href: '#',
+          width: 1142
         },
         {
           left27: true,
           name: 'Личным помощникам',
           font11: true,
-          href: '#'
+          href: '#',
+          width: 1142
         },
         {
           left27: true,
           name: 'Частным клиентам',
           font11: true,
+          href: '#',
+          width: 1142
+        },
+        {
+          left60: true,
+          src: require('../../assets/img/vip-avia/visa_icon.svg'),
+          alt: 'Info'
+        },
+        {
+          left15: true,
+          src: require('../../assets/img/vip-avia/master_card_icon.svg'),
+          alt: 'Info'
+        }
+
+      ],
+      mainMenu1140: [
+        {
+          left0: true,
+          name: '8 (800) 333-17-85 ',
+          src: require('../../assets/img/vip-avia/smartphone-iphone.svg'),
+          alt: 'Cellphone',
+          pic6: true,
+          font14: true,
+          href: '#',
+          width: 1142
+        },
+        {
+          left30: true,
+          name: '+7 (495) 120-57-55',
+          src: require('../../assets/img/vip-avia/smartphone-iphone.svg'),
+          alt: 'Cellphone',
+          pic6: true,
+          font14: true,
+          href: '#',
+          width: 1142
+        },
+        {
+          name: 'Информация для клиентов',
+          src: require('../../assets/img/vip-avia/info-outline.svg'),
+          alt: 'Info for clients',
+          pic12: true,
+          font11: true,
+          corpClass: true,
+          myWidth1141: true,
           href: '#'
         },
         {
@@ -232,6 +330,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .widhtFor1140{
+    display: none !important;
+  }
   .side-sub-menu {
     text-transform: uppercase;
     background-color: #DADADA;
@@ -248,8 +349,11 @@ export default {
   }
 
   .main-nav {
+    .corpClass{
+      margin: 0 0 0 30px;
+    }
     .main-nav__top{
-        padding: 0 0 0 374px;
+        padding: 0;
         margin: 0 0 14.5px 0;
     }
     .main-nav__top {
@@ -294,7 +398,7 @@ export default {
       color: #9bc9fb !important;
     }
      margin: 5px 0 -26.5px 0;
-      padding: 0 0 0 374px;
+      padding: 0;
     .logo-block{
       margin: 4px 0 0 0;
       font-weight: 600;
@@ -393,74 +497,37 @@ export default {
   }
 
   @media only screen and (max-width: 1680px) {
-    .img-logo {
-      margin: 0 -82px 0 0;
+    .main-nav .main-nav__top {
+      padding: 0;
+      margin: 0 0 14.5px 0;
     }
-    .main-nav {
-      padding-left: 146px;
-    }
-  }
-
-  @media only screen and (max-width: 1600px) {
-    .img-logo {
-      margin: 0 -38px 0 0;
-    }
-    .main-nav {
-      padding-left: 109px;
-    }
-  }
-
-  @media only screen and (max-width: 1440px) {
-    .img-logo {
-      margin: 0 0 0 -76px;
-    }
-    .main-nav {
-      padding-left: 67px;
-    }
-  }
-
-  @media only screen and (max-width: 1400px) {
-    .main-nav {
-      padding-left: 84px;
-    }
-  }
-
+   }
   @media only screen and (max-width: 1366px) {
-    .margin-left-40 {
-      margin-left: 33px;
-    }
-    .nav-icons {
-      margin-left: 154px;
-      margin-top: 4px;
-    }
-    .nav-phone {
-      margin-left: 209px;
-    }
-  }
-
-  @media only screen and (max-width: 1280px) {
-    .nav-phone {
-      margin-left: 160px;
+    .first-block {
+      margin: 0 0 0 96px;
+      padding: 6px 0 0 0;
     }
     .main-nav {
-      padding-left: 51px;
+         .corpClass {
+        margin: 0 0 0 45px;
+      }
     }
-    .margin-left-48 {
-      margin-left: 24px;
-    }
-    .nav-icons .shopping-bag .shopping-bag__round {
-      bottom: -2px;
-      right: -7px;
-    }
-  }
+   .main-nav .main-nav__top {
+     margin: 0 0 15.5px 0;
 
+    }
+   .sub-nav {
+     margin: 13px 0 -26.5px 0;
+      }
+
+   }
   @media only screen and (max-width: 1140px) {
-    .margin-left-40 {
-      margin-left: 24px;
-    }
-    .nav-phone {
-      margin-left: 94px;
-    }
+  .main-nav .corpClass {
+    margin: 0 226px 0 45px;
+  }
+    .sub-nav .logo-block {
+      margin: 4px 415px 0 0;
+     }
   }
 
   @media only screen and (max-width: 1024px) {

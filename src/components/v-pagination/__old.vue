@@ -144,5 +144,9 @@ export default {
     font-size: 30px !important;
     line-height: 28px !important;
   }
+  @media only screen and (max-width: 1366px) {
+  .v-my-pagination {
+    margin: 0px auto 0 auto;
+  }}
 
 </style>

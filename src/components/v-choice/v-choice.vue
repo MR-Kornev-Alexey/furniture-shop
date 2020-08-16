@@ -1,8 +1,15 @@
 <template>
-  <v-row class="">
+  <v-row class="v-choice d-flex justify-center">
     <div class="first-block">
-      <v-my-select :options="options" class="v-select-bar" label="title">
-        <template slot="option" slot-scope="option">
+      <label>
+        <select>
+          <option> &#xf07a; Корзина </option>
+          <option> &#xf07a; Корзина-1 </option>
+          <option> &#xf15d; Корзина-2 </option>
+        </select>
+      </label>
+      <v-my-select :options="options" class="v-select-bar" label="title" >
+        <template  slot="option" slot-scope="option">
           <div>
             <span :class="option.icon" class="zmdi icon-gray"></span>
             <span class="v-select-out">{{ option.title }}</span>
@@ -11,6 +18,13 @@
       </v-my-select>
     </div>
     <div class="second-block">
+      <label>
+        <select>
+          <option> &#xf15d; По дате оформления </option>
+          <option> &#xf15d; По другой дате  </option>
+          <option> &#xf15d; И по еще дате </option>
+        </select>
+      </label>
       <v-my-select :options="dataFilter" class="v-select-bar" label="title">
         <template slot="option" slot-scope="option">
           <div>
@@ -21,6 +35,10 @@
       </v-my-select>
     </div>
     <div class="upload-block">
+      <div class="v-select-bar-csv d-flex justify-center">
+        <div class="d-flex align-self-center">Скачать все в CSV <i class="zmdi zmdi-file-text" style="margin: 0 0 0 9px; font-size: 24px"></i></div>
+
+      </div>
       <div class="v-select-bar-csv d-flex justify-center">
         <div class="d-flex align-self-center">Скачать все в CSV <i class="zmdi zmdi-file-text" style="margin: 0 0 0 9px; font-size: 24px"></i></div>
 
@@ -37,12 +55,18 @@ import 'vue-select/dist/vue-select.css'
 Vue.component('v-my-select', vSelect)
 export default {
   name: 'v-choice',
+  methods: {
+    changeOut () {
+      alert('1111')
+    }
+  },
   data: () => ({
     options: [
       {
         title: 'Корзина',
         icon: 'zmdi-shopping-cart',
-        url: 'https://codeclimate.com/github/sagalbot/vue-select'
+        url: 'https://codeclimate.com/github/sagalbot/vue-select',
+        choice: false
       },
       {
         title: 'Корзина -1',
@@ -77,8 +101,11 @@ export default {
 </script>
 
 <style lang="scss">
+  .vs__actions{
+    width: 47px;
+  }
   .first-block {
-    margin: 0 0 0 374px;
+    margin: 0;
     padding: 6px 0 0 0;
   }
 
@@ -106,7 +133,7 @@ export default {
   }
 
   .vs__selected-options {
-    width: 344px;
+    width: 320px;
     height: 47px;
     justify-content: right;
   }
@@ -130,4 +157,19 @@ export default {
     /* identical to box height, or 27px */
     color: #207245;
   }
+  @media only screen and (max-width: 1366px) {
+    .first-block {
+          padding: 6px 0 0 0;
+    }
+  }
+  @media only screen and (max-width: 1140px) {
+    .vs__selected-options {
+      width: 265px;
+      height: 47px;
+      justify-content: right;
+    }
+    select {
+      width: 320px;}
+  }
+
 </style>

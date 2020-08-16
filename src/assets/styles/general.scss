@@ -135,3 +135,23 @@ font-size: 24px;
 * {
   box-sizing: border-box;
 }
+
+select {
+  font-family: 'FontAwesome';
+  width: 370px;
+  height: 50px;
+  font-size: 21px;
+  line-height: 135%;
+  border: 1px solid #DCE1E7;
+  box-sizing: border-box;
+  border-radius: 5px;
+  /* identical to box height, or 27px */
+  padding: 0 0 0 27px;
+
+
+  color: #777777;
+}
+@media only screen and (max-width: 1140px) {
+  select {
+    width: 320px;}
+}
