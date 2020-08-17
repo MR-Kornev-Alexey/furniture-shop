@@ -2,8 +2,9 @@
   <v-row class="v-choice d-flex justify-center">
     <div class="first-block">
       <label>
-        <select>
-          <option> &#xf07a; Корзина </option>
+        <select v-model="selected">
+          <option disabled value="">&#xf07a; Корзина </option>
+          <option> &#xf07a; Корзина 0</option>
           <option> &#xf07a; Корзина-1 </option>
           <option> &#xf15d; Корзина-2 </option>
         </select>
@@ -56,6 +57,7 @@ Vue.component('v-my-select', vSelect)
 export default {
   name: 'v-choice',
   data: () => ({
+    selected: '',
     options: [
       {
         title: 'Корзина',
