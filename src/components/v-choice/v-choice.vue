@@ -4,9 +4,9 @@
       <label>
         <select v-model="selected">
           <option disabled value="">&#xf07a; Корзина </option>
-          <option> &#xf07a; Корзина 0</option>
-          <option> &#xf07a; Корзина-1 </option>
-          <option> &#xf15d; Корзина-2 </option>
+          <option> &#xf07a; Корзина 1</option>
+          <option> &#xf07a; Корзина-2 </option>
+          <option> &#xf15d; Корзина-3 </option>
         </select>
       </label>
       <v-my-select :options="options" class="v-select-bar" label="title" >
